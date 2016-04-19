@@ -19,7 +19,7 @@ exports.camelize = function(object) {
 
 			for(var k in object)
 			{
-				if(typeof object[k] == "object")
+				if(typeof object[k] == "object" && object[k])
 				{
 					newObject.push(camelizeObject(object[k]));
 				}
@@ -38,7 +38,7 @@ exports.camelize = function(object) {
 				var newK = camelCase(k);
 				newObject[newK] = object[k];
 
-				if(typeof newObject[newK] == "object")
+				if(typeof newObject[newK] == "object" && newObject[newK])
 				{
 					newObject[newK] = camelizeObject(newObject[newK]);
 				}
@@ -60,7 +60,7 @@ exports.decamelize = function(object, separator) {
 
 			for(var k in object)
 			{
-				if(typeof object[k] == "object")
+				if(typeof object[k] == "object" && object[k])
 				{
 					newObject.push(decamelizeObject(object[k]));
 				}
@@ -79,7 +79,7 @@ exports.decamelize = function(object, separator) {
 				var newK = decamelize(k, separator);
 				newObject[newK] = object[k];
 
-				if(typeof newObject[newK] == "object")
+				if(typeof newObject[newK] == "object" && newObject[newK])
 				{
 					newObject[newK] = decamelizeObject(newObject[newK]);
 				}
