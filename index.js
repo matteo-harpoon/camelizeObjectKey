@@ -1,15 +1,15 @@
 /*
 * @Author: Matteo
 * @Date:   2016-04-19 06:39:17
-* @Last Modified by:   Matteo
-* @Last Modified time: 2016-04-19 06:39:25
+* @Last Modified by:   Matteo Zambon
+* @Last Modified time: 2016-04-19 07:13:43
 */
 
-exports.camelizeObject = function(type, object, separator) {
+var camelCase = require("camelcase");
+var decamelize = require("decamelize");
+var isArray = require("is-array");
 
-	var camelCase = require("camelcase");
-	var decamelize = require("decamelize");
-	var isArray = require("is-array");
+exports.camelize = function(object) {
 
 	function camelizeObject(object)
 	{
@@ -48,6 +48,10 @@ exports.camelizeObject = function(type, object, separator) {
 		return newObject;
 	}
 
+	return camelizeObject(object);
+};
+
+exports.decamelize = function(object, separator) {
 	function decamelizeObject(object, separator)
 	{
 		if(isArray(object))
@@ -85,16 +89,7 @@ exports.camelizeObject = function(type, object, separator) {
 		return newObject;
 	}
 
-	if(type == "camelize")
-	{
-		return camelizeObject(object);
-	}
-	if(type == "decamelize")
-	{
-		separator = typeof separator == "undefined" ? "_" : separator == null ? "_" : separator;
+	separator = typeof separator == "undefined" ? "_" : separator == null ? "_" : separator;
 
-		return decamelizeObject(object, separator);
-	}
-
-	throw "Type is invalid, accepted camelize/decamelize";
-}
+	return decamelizeObject(object, separator);
+};

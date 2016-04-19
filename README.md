@@ -4,16 +4,21 @@
 
 ## Installation
 
-    $ npm install --save matteo-harpoon/camelizeObject
+    $ npm install --save camelize-object-key
 
 ## API
 
-### camelizeObject(type, object, separator)
+### camelize(object)
 
 ```javascript
-camelizeObject("camelize", { "id": 1, "first_name": "Matteo" });
+camelizeObjectKey.camelize({ "id": 1, "first_name": "Matteo" });
 // > { "id": 1, "firstName": "Matteo" }
-camelizeObject("decamelize", { "id": 1, "firstName": "Matteo" });
+```
+
+### decamelize(object, separator = "_")
+
+```javascript
+camelizeObjectKey.decamelize({ "id": 1, "firstName": "Matteo" });
 // > { "id": 1, "firstName": "Matteo" }
 ```
 
