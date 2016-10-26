@@ -19,13 +19,16 @@ exports.camelize = function(object) {
 
 			for(var k in object)
 			{
-				if(typeof object[k] == "object" && object[k])
+				if(object.hasOwnProperty(k))
 				{
-					newObject.push(camelizeObject(object[k]));
-				}
-				else
-				{
-					newObject.push(object[k]);
+					if(typeof object[k] == "object" && object[k])
+					{
+						newObject.push(camelizeObject(object[k]));
+					}
+					else
+					{
+						newObject.push(object[k]);
+					}
 				}
 			}
 		}
@@ -35,12 +38,15 @@ exports.camelize = function(object) {
 
 			for(var k in object)
 			{
-				var newK = camelCase(k);
-				newObject[newK] = object[k];
-
-				if(typeof newObject[newK] == "object" && newObject[newK])
+				if(object.hasOwnProperty(k))
 				{
-					newObject[newK] = camelizeObject(newObject[newK]);
+					var newK = camelCase(k);
+					newObject[newK] = object[k];
+
+					if(typeof newObject[newK] == "object" && newObject[newK])
+					{
+						newObject[newK] = camelizeObject(newObject[newK]);
+					}
 				}
 			}
 		}
@@ -60,13 +66,16 @@ exports.decamelize = function(object, separator) {
 
 			for(var k in object)
 			{
-				if(typeof object[k] == "object" && object[k])
+				if(object.hasOwnProperty(k))
 				{
-					newObject.push(decamelizeObject(object[k]));
-				}
-				else
-				{
-					newObject.push(object[k]);
+					if(typeof object[k] == "object" && object[k])
+					{
+						newObject.push(decamelizeObject(object[k]));
+					}
+					else
+					{
+						newObject.push(object[k]);
+					}
 				}
 			}
 		}
@@ -76,12 +85,15 @@ exports.decamelize = function(object, separator) {
 
 			for(var k in object)
 			{
-				var newK = decamelize(k, separator);
-				newObject[newK] = object[k];
-
-				if(typeof newObject[newK] == "object" && newObject[newK])
+				if(object.hasOwnProperty(k))
 				{
-					newObject[newK] = decamelizeObject(newObject[newK]);
+					var newK = decamelize(k, separator);
+					newObject[newK] = object[k];
+
+					if(typeof newObject[newK] == "object" && newObject[newK])
+					{
+						newObject[newK] = decamelizeObject(newObject[newK]);
+					}
 				}
 			}
 		}
