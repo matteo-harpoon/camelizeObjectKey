@@ -1,6 +1,6 @@
 # camelizeObject
 
-  Turn object keys into camelCased or decamelize them with a given separator
+  Turn object keys into camelCased or decamelize them with a given separator, defaulting to an underscore.
 
 ## Installation
 
@@ -19,7 +19,10 @@ camelizeObjectKey.camelize({ "id": 1, "first_name": "Matteo" });
 
 ```javascript
 camelizeObjectKey.decamelize({ "id": 1, "firstName": "Matteo" });
-// > { "id": 1, "firstName": "Matteo" }
+// > { "id": 1, "first_name": "Matteo" }
+
+camelizedObjectKey.decamelize({ "id": 1, "firstName": "Matteo" }, '-');
+// > { "id": 1, "first-name": "Matteo" }
 ```
 
 ## License
